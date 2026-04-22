@@ -20,6 +20,16 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            val storeFilePath = System.getenv("KEYSTORE_PATH") ?: "release.keystore"
+            storeFile = file(storeFilePath)
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "phpserver2024"
+            keyAlias = System.getenv("KEY_ALIAS") ?: "phpserver"
+            keyPassword = System.getenv("KEY_PASSWORD") ?: "phpserver2024"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -55,16 +65,6 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-
-    signingConfigs {
-        create("release") {
-            val storeFilePath = System.getenv("KEYSTORE_PATH") ?: "release.keystore"
-            storeFile = file(storeFilePath)
-            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "phpserver2024"
-            keyAlias = System.getenv("KEY_ALIAS") ?: "phpserver"
-            keyPassword = System.getenv("KEY_PASSWORD") ?: "phpserver2024"
         }
     }
 
