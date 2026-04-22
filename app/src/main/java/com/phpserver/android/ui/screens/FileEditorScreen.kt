@@ -9,7 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.mutableIntStateOf
+// mutableIntStateOf not available in this compose version
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
@@ -31,8 +31,8 @@ fun FileEditorScreen(
     var isModified by remember { mutableStateOf(false) }
     var showSaveDialog by remember { mutableStateOf(false) }
     var showUnsavedDialog by remember { mutableStateOf(false) }
-    var lineCount by remember { mutableIntStateOf(1) }
-    var cursorPosition by remember { mutableIntStateOf(0) }
+    var lineCount by remember { mutableStateOf(1) }
+    var cursorPosition by remember { mutableStateOf(0) }
     val snackbarHostState = remember { SnackbarHostState() }
     var showSavedMessage by remember { mutableStateOf(false) }
 
