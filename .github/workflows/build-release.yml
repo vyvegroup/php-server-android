@@ -60,7 +60,9 @@ jobs:
 
       - name: Generate keystore for signing
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > release.keystore
+          if [ -n "${{ secrets.KEYSTORE_BASE64 }}" ]; then
+            echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > release.keystore
+          fi
           if [ ! -s release.keystore ]; then
             # Generate a release keystore for CI
             keytool -genkeypair \
@@ -74,6 +76,8 @@ jobs:
               -keypass phpserver2024 \
               -dname "CN=PHP Local Server, OU=Development, O=PHPServer, L=Unknown, ST=Unknown, C=US"
           fi
+          ls -la release.keystore
+          keytool -list -v -keystore release.keystore -storepass phpserver2024 | head -20
 
       - name: Build Release APK (Signed v1+v2+v3)
         env:
@@ -81,11 +85,7 @@ jobs:
           KEY_ALIAS: phpserver
           KEY_PASSWORD: phpserver2024
         run: |
-          ./gradlew assembleRelease \
-            --no-daemon \
-            -PKESSTORE_PASSWORD=phpserver2024 \
-            -PKEY_ALIAS=phpserver \
-            -PKEY_PASSWORD=phpserver2024
+          ./gradlew assembleRelease --no-daemon
 
       - name: Verify APK Signature (v1+v2+v3)
         run: |
