@@ -9,7 +9,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
@@ -150,7 +152,7 @@ fun FileEditorScreen(
                         Text(
                             "Modified",
                             style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.warning,
+                            color = Color(0xFFF57F17),
                             fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
                         )
                     } else {
@@ -225,8 +227,8 @@ fun FileEditorScreen(
                         ),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
-                            unfocusedBorderColor = MaterialTheme.colorScheme.transparent,
-                            disabledBorderColor = MaterialTheme.colorScheme.transparent,
+                            unfocusedBorderColor = Color.Transparent,
+                            disabledBorderColor = Color.Transparent,
                             cursorColor = PhpPrimary,
                         ),
                         readOnly = false

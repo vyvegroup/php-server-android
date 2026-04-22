@@ -15,6 +15,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.KeyboardType
 import com.phpserver.android.server.ServerState
 import com.phpserver.android.ui.theme.*
 import com.phpserver.android.viewmodel.ServerViewModel
@@ -490,7 +492,7 @@ fun ServerStatusCard(
                         enabled = false,
                         shape = MaterialTheme.shapes.large
                     ) {
-                        Icon(Icons.Default.Loading, contentDescription = null)
+                        Icon(Icons.Default.Cached, contentDescription = null)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text("Starting...", fontWeight = FontWeight.Bold)
                     }
@@ -514,8 +516,8 @@ fun ServerStatusCard(
                     },
                     label = { Text("Port Number") },
                     singleLine = true,
-                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
-                        keyboardType = androidx.compose.foundation.text.KeyboardType.Number
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number
                     )
                 )
             },

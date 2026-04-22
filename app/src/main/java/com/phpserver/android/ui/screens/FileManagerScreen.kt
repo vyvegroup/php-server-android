@@ -301,7 +301,7 @@ fun FileItem(
         fileInfo.extension == "json" -> Icons.Default.DataObject
         fileInfo.extension == "xml" -> Icons.Default.Description
         fileInfo.extension == "txt" -> Icons.Default.TextFields
-        fileInfo.extension == "md" -> Icons.Default.Markdown
+        fileInfo.extension == "md" -> Icons.Default.Description
         fileInfo.extension in listOf("png", "jpg", "jpeg", "gif", "svg", "ico") -> Icons.Default.Image
         fileInfo.extension in listOf("sql", "db") -> Icons.Default.Storage
         else -> Icons.Default.InsertDriveFile

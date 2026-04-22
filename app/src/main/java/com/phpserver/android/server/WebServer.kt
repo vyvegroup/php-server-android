@@ -110,7 +110,7 @@ class WebServer(private val port: Int) : NanoHTTPD(port) {
     private fun logRequest(method: String, uri: String, ip: String) {
         ServerState.logs.add("[${timestamp()}] $method $uri - $ip")
         if (ServerState.logs.size > 500) {
-            ServerState.logs.removeRange(0, 50)
+            ServerState.logs.subList(0, 50).clear()
         }
     }
 

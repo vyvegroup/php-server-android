@@ -1,5 +1,6 @@
 package com.phpserver.android.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -206,7 +207,7 @@ Extensions: core, standard, date, json, fileinfo
                 Column(modifier = Modifier.padding(20.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
-                            Icons.Default.About,
+                            Icons.Default.Info,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onSecondaryContainer
                         )

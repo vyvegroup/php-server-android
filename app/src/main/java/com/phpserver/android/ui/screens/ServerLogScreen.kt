@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.phpserver.android.ui.theme.*
 import com.phpserver.android.viewmodel.ServerViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,6 +29,7 @@ fun ServerLogScreen(
 ) {
     val logs by viewModel.logs.collectAsState()
     val listState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
     var autoScroll by remember { mutableStateOf(true) }
     var filterText by remember { mutableStateOf("") }
 
@@ -75,7 +77,7 @@ fun ServerLogScreen(
                     IconButton(onClick = {
                         autoScroll = true
                         if (logs.isNotEmpty()) {
-                            listState.animateScrollToItem(logs.size - 1)
+                            scope.launch { listState.animateScrollToItem(logs.size - 1) }
                         }
                     }) {
                         Icon(Icons.Default.ArrowDownward, contentDescription = "Scroll to Bottom")
